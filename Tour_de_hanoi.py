@@ -1,4 +1,5 @@
 def init(n):
+	"""IL FAUT METTRE DE LA DOCUMENTATION"""
 	poteau_g = []
 	poteau_c = []
 	poteau_d = []
