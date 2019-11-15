@@ -25,7 +25,6 @@ def disque_superieur(n,p):
 	l = l[-1]
 	print(l)
 
-# ik
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 disque_superieur(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 
