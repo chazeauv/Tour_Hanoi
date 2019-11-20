@@ -6,7 +6,7 @@ def init(n):
 	#dsup = [-1] #compteur disque supérieur
 
 	while n!=0:
-		poteau_c.append(n)
+		poteau_d.append(n)
 		n = n-1
 
 	#print(dsup)
@@ -22,26 +22,17 @@ def disque_superieur(n):
 
 	varinit = init(n) #variables définies dans init
 	dsup = []
-	a = varinit[0]
-	b = varinit[1]
-	c = varinit[2]
-	
-	if (a != []):
-		a = a[-1]
-		dsup.append(a)
-	else:
-		dsup.append(0)
-	if (b != []):
-		b = b[-1]
-		dsup.append(b)
-	else:
-		dsup.append(0)
-	if (c != []):
-		c = c[-1]
-		dsup.append(c)
-	else:
-		dsup.append(0)
-	print(dsup)
+
+
+	for ntour in range(0,3):
+		a = varinit[ntour]
+		if (a != []):
+			a = a[-1]
+			dsup.append(a)
+		else:
+			dsup.append(0)
+
+	return dsup
 def pos_disque(n,numdisque):
 
 	varinit = init(n) #variables définies dans init
@@ -55,10 +46,15 @@ def pos_disque(n,numdisque):
 	else:
 		print("Le numéro de disque n'existe pas.")
 
+def verif_deplacement(n,nt1,nt2):
+	ldsup = disque_superieur(n) #liste des plus hauts disques de chaque tour
+	if ldsup[nt1]<ldsup[nt2] and (ldsup[nt1]!=0 or ldsup[nt2]==0):
+		print("VAS Y PASSE")
+	else:
+		print("BOUFFON TU FOUS QUOI DEGAGE")
 
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
-disque_superieur(int(input("Entrez un nombre de disque : ")))
+#disque_superieur(int(input("Entrez un nombre de disque : ")))
 #pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
-
-
+verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
 
