@@ -72,18 +72,47 @@ def verifier_victoire(n):
 
 def dessine_plateau(n):
 	
-	dim_grd_disque = n*3 + 98
+	dim_grd_disque = 10 + ((n-1)*30) 					#Diamètre du plus grand disque disque
+	bord = (dim_grd_disque/2)+11						#Espace entre les tours gauche et droite avec les extremités du plateau
+	dim_plateau = dim_grd_disque*3 + 80					#Longueur plateau
+	htour = n*20 + 20									#Hauteur tour
 
 	up()
 	goto(-300,-200)
 	down()
 
 	for k in range (0,2):
-		forward(dim_grd_disque)
+		forward(dim_plateau)
 		left(90)
-		forward(20)
+		forward(60)
 		left(90)
+
+	up()
+	goto(-(300-bord),-140)
+	down()
+
+	for k in range (0,3):
+		left(90)
+		forward(htour)
+		right(90)
+		forward(18)
+		right(90)
+		forward(htour)
+		left(90)
+
+		up()
+		forward((dim_plateau-2*bord-54)/2)
+		down()
+
+	up()
+	goto(-300,-200)
+	down()	
+
 	mainloop()
+
+	print(bord)
+	print(dim_grd_disque)
+	print(dim_plateau)
 
 dessine_plateau(int(input("Entrez le nombre de disques: ")))
 	
