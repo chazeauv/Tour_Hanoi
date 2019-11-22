@@ -72,7 +72,8 @@ def verifier_victoire(n):
 
 def dessine_plateau(n):
 	
-	dim_grd_disque = 10 + ((n-1)*30) 					#Diamètre du plus grand disque disque
+
+	dim_grd_disque = 20 + ((n-1)*30) 					#Diamètre du plus grand disque disque
 	bord = (dim_grd_disque/2)+11						#Espace entre les tours gauche et droite avec les extremités du plateau
 	dim_plateau = dim_grd_disque*3 + 80					#Longueur plateau
 	htour = n*20 + 20									#Hauteur tour
