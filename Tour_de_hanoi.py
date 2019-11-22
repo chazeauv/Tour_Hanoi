@@ -63,10 +63,6 @@ def verifier_victoire(n):
 	else:
 		print("PAS GG")
 
-#nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
-#disque_superieur(int(input("Entrez un nombre de disque : ")))
-#pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
-#verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
 
 #TURTLE
 
@@ -116,3 +112,7 @@ def dessine_plateau(n):
 
 dessine_plateau(int(input("Entrez le nombre de disques: ")))
 	
+#nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
+#disque_superieur(int(input("Entrez un nombre de disque : ")))
+#pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
+#verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
