@@ -8,7 +8,7 @@ def init(n):
 	vargd = []
 	grandeur_disque = []
 	bord_select = []
-	m = n 
+	m = n
 
 	while n!=0:
 		poteau_g.append(n)
@@ -74,7 +74,7 @@ def verifier_victoire(n):
 
 
 #TURTLE
-#hideturtle()
+hideturtle()
 def dessine_plateau(n):
 	
 	 bgpic("C:\Utilisateurs\lazer\OneDrive\Documents\GitHub\Tour_Hanoi\wallpaper.gif")
