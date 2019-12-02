@@ -11,7 +11,7 @@ def init(n):
 	m = n 
 
 	while n!=0:
-		poteau_d.append(n)
+		poteau_g.append(n)
 		vargd.append(n)
 		n = n-1
 
@@ -77,7 +77,7 @@ def verifier_victoire(n):
 #hideturtle()
 def dessine_plateau(n):
 	
-	# bgpic("file:///C:/Users/lazer/OneDrive/Documents/GitHub/Tour_Hanoi/giphy.gif")
+	 bgpic("C:\Utilisateurs\lazer\OneDrive\Documents\GitHub\Tour_Hanoi\wallpaper.gif")
 	# print(bgpic())
 
 	dim_grd_disque = 20 + ((n-1)*30) 					#Diamètre du plus grand disque disque
