@@ -24,10 +24,10 @@ def init(n):
 	return poteau_g,poteau_c,poteau_d,grandeur_disque,bord_select
 
 def nombre_disques(n,p):
-
 	varinit = init(n) #variables définies dans init
 	l = varinit[p] #Variable l qui prend l'un des poteaux en parametres
-	#print(len(l))
+	lengh = len(l)
+	return lengh
 
 def disque_superieur(n):
 
@@ -60,9 +60,9 @@ def pos_disque(n,numdisque):
 def verif_deplacement(n,nt1,nt2):
 	ldsup = disque_superieur(n) #liste des plus hauts disques de chaque tour
 	if ldsup[nt1]<ldsup[nt2] and (ldsup[nt1]!=0 or ldsup[nt2]==0):
-		print("VAS Y PASSE")
+		return True
 	else:
-		print("BOUFFON TU FOUS QUOI DEGAGE")
+		return False
 
 def verifier_victoire(n):
 	varinit = init(n)
@@ -262,6 +262,36 @@ def efface_disque(numdisque,n):
 #dessine_plateau(5)
 efface_disque(5,5)
 
+def lire_coords(n):
+	varinit = init(n)
+	poteau_g = varinit[0]
+	poteau_c = varinit[1]
+	poteau_d = varinit[2]
+	print(poteau_g,poteau_c,poteau_d)
+	tour_depart = 0
+	tour_arrivee = 0
+	while (tour_depart != True) and (tour_arrivee != True):
+		tour_depart = int(input("Entrez la tour de départ (0 à 2): "))
+		tour_arrivee = int(input("Entrez la tour d'arrivée (0 à 2): "))
+		td = tour_depart
+		ta = tour_arrivee
+		p = tour_depart
+		lengh = nombre_disques(n,p)
+		nt1 = tour_depart
+		nt2 = tour_arrivee
+		verif = verif_deplacement(n,nt1,nt2)
+		if lengh > 0:
+			tour_depart = True
+		else:
+			tour_depart = False
+		if verif == True:
+			tour_arrivee = True
+		else:
+			tour_arrivee = False
+	print("Le déplacement entre la tour",td,"et la tour",ta,"est possible.")
+
+
+lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
 #pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
