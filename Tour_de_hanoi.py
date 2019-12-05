@@ -81,7 +81,7 @@ def verifier_victoire(n):
 
 #TURTLE
 hideturtle()
-speed(0)
+#speed(0)
 def dessine_plateau(n):
 	
 	#bgpic("C:\Users\lazer\Desktop\HanoiPowa\wallpaper.gif")
@@ -188,6 +188,7 @@ def dessine_disque(numdisque,n):
 			left(90)
 
 	end_fill()
+	return grandeur_disque
 
 def efface_disque(numdisque,n):
 	varinit = init(n)
@@ -303,8 +304,9 @@ def dessine_config(n):
 		dessine_disque(k,n)
 
 def efface_tout(n):
-	for k in range(0,n):
+	for k in range(0,n+1):
 		efface_disque(k,n)
+	
 
 dessine_plateau(5)
 #dessine_disque(5,5)
@@ -343,7 +345,7 @@ def lire_coords(n):
 	print("Le déplacement entre la tour",td,"et la tour",ta,"est possible.")
 
 
-lire_coords(10)
+#lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
 #pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
