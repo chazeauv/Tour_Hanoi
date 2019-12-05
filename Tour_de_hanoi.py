@@ -260,14 +260,14 @@ def efface_disque(numdisque,n):
 		mainloop()
 
 #dessine_plateau(5)
-efface_disque(5,5)
+#efface_disque(5,5)
 
 def lire_coords(n):
 	varinit = init(n)
 	poteau_g = varinit[0]
 	poteau_c = varinit[1]
 	poteau_d = varinit[2]
-	print(poteau_g,poteau_c,poteau_d)
+	#print(poteau_g,poteau_c,poteau_d) TEST
 	tour_depart = 0
 	tour_arrivee = 0
 	while (tour_depart != True) and (tour_arrivee != True):
@@ -288,10 +288,15 @@ def lire_coords(n):
 			tour_arrivee = True
 		else:
 			tour_arrivee = False
-	print("Le déplacement entre la tour",td,"et la tour",ta,"est possible.")
+	return td,ta
+
+def jouer_un_coup(n):
+	lire_c = lire_coords(n)
+	
 
 
-lire_coords(10)
+jouer_un_coup(10)
+#lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
 #pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
