@@ -308,13 +308,13 @@ def efface_tout(n):
 		efface_disque(k,n)
 	
 
-dessine_plateau(5)
+#dessine_plateau(5)
 #dessine_disque(5,5)
 #efface_disque(5,5)
-dessine_config(5)
-efface_tout(5)
+#dessine_config(5)
+#efface_tout(5)
 #init(5)
-mainloop()
+#mainloop()
 
 def lire_coords(n):
 	varinit = init(n)
@@ -346,9 +346,12 @@ def lire_coords(n):
 
 def jouer_un_coup(n):
 	lire_c = lire_coords(n)
+	td = lire_c[0]
+	ta = lire_c[1]
+	return td,ta
 	
 
-
+jouer_un_coup(10)
 #lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
