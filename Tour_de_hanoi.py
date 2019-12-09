@@ -1,5 +1,6 @@
 
 from turtle import*
+import sys
 
 def init(n):
 	poteau_g = []
@@ -381,6 +382,14 @@ def jouer_un_coup(n):
 
 	dessine_disque(4,5,plateau)
 	return plateau
+
+def test(n):
+	this = sys.modules[__name__] # this is now your current namespace
+	for x in range(0,n):
+		setattr(this, 'ndis%s' % x, n)
+		n = n-1
+	for i in range(0,n):
+		return 'ndis%s'
 
 def boucle_jeu(plateau,n):
 
