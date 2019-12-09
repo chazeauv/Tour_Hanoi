@@ -392,7 +392,7 @@ def indice_dis(n):
 		return 'ndis%s'
 
 def boucle_jeu(plateau,n):
-
+	limite = 
 
 #jouer_un_coup(5)
 #lire_coords(10)
