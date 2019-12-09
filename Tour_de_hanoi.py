@@ -49,7 +49,7 @@ def disque_superieur(n):
 		else:
 			dsup.append(0)
 
-	return dsup
+	print(dsup)
 def pos_disque(n,numdisque):
 
 	varinit = init(n) #variables définies dans init
@@ -351,7 +351,8 @@ def jouer_un_coup(n):
 	return td,ta
 	
 
-jouer_un_coup(10)
+disque_superieur(10)
+#jouer_un_coup(10)
 #lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
