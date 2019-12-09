@@ -1,3 +1,4 @@
+
 from turtle import*
 
 def init(n):
@@ -12,8 +13,7 @@ def init(n):
 	m = n
 
 	while n!=0:
-		poteau_g.append(n)
-		#poteau_c.append(n) 
+		poteau_g.append(n) 
 		vargd.append(n)
 		n = n-1
 
@@ -128,17 +128,19 @@ def dessine_plateau(n):
 	goto(-300,-200)
 	down()
 
-def dessine_disque(numdisque,n):
+def dessine_disque(numdisque,n,plateau):
 	varinit = init(n)
 	grandeur_disque = varinit[3]  #Variable donnant la longueur du disque sélectionné
 	bord_select = varinit[4]	  #Variable donnant l'écart entre le disque sélectionné et les bordures du plateau
 
-	a = varinit[0]
-	b = varinit[1]
-	c = varinit[2]
-
 	fillcolor("white")
 	begin_fill()
+
+	a = plateau[0]
+	b = plateau[1]
+	c = plateau[2]
+
+	print(a[numdisque-1])
 
 	if numdisque in a:										#Test la tour dans laquelle est le disque
 
@@ -190,14 +192,10 @@ def dessine_disque(numdisque,n):
 	end_fill()
 	return grandeur_disque
 
-def efface_disque(numdisque,n):
+def efface_disque(numdisque,n,a,b,c):
 	varinit = init(n)
 	grandeur_disque = varinit[3]
 	bord_select = varinit[4]
-
-	a = varinit[0]
-	b = varinit[1]
-	c = varinit[2]
 
 	if numdisque in a:
 
@@ -309,7 +307,7 @@ def efface_tout(n):
 	
 
 #dessine_plateau(5)
-#dessine_disque(5,5)
+#dessine_disque(1,5)
 #efface_disque(5,5)
 #dessine_config(5)
 #efface_tout(5)
@@ -345,14 +343,48 @@ def lire_coords(n):
 	return td,ta
 
 def jouer_un_coup(n):
+	varinit = init(n)
 	lire_c = lire_coords(n)
 	td = lire_c[0]
 	ta = lire_c[1]
-	return td,ta
-	
 
-disque_superieur(10)
-#jouer_un_coup(10)
+	a = varinit[0]
+	b = varinit[1]
+	c = varinit[2]
+
+	plateau = [a,b,c]
+
+	if td == 0 and ta == 1:
+		g = a[-1]
+		b.append(g)
+		del a[-1]
+	elif td == 0 and ta == 2:
+		g = a[-1]
+		c.append(g)
+		del a[-1]
+	elif td == 1 and ta == 0:
+		g = b[-1]
+		a.append(g)
+		del b[-1]
+	elif td == 1 and ta == 2:
+		g = b[-1]
+		c.append(g)
+		del b[-1]	
+	elif td == 2 and ta == 0:
+		g = c[-1]
+		a.append(g)
+		del c[-1]
+	elif td == 2 and ta == 1:
+		g = c[-1]
+		b.append(g)
+		del c[-1]
+
+
+	dessine_plateau(5)
+	dessine_disque(5,5,plateau)
+
+
+jouer_un_coup(5)
 #lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
