@@ -74,9 +74,9 @@ def verifier_victoire(n):
 	varinit = init(n)
 	nt2 = varinit[2]
 	if len(nt2) == n:
-		print("GG")
+		return True 
 	else:
-		print("PAS GG")
+		return False 
 
 
 #TURTLE
@@ -192,7 +192,7 @@ def dessine_disque(numdisque,n,plateau):
 	end_fill()
 	return grandeur_disque
 
-def efface_disque(numdisque,n,a,b,c):
+def efface_disque(numdisque,n,plateau):
 	varinit = init(n)
 	grandeur_disque = varinit[3]
 	bord_select = varinit[4]
@@ -306,10 +306,10 @@ def efface_tout(n):
 		efface_disque(k,n)
 	
 
-#dessine_plateau(5)
-#dessine_disque(1,5)
+dessine_plateau(5)
+#dessine_disque(5,5)
 #efface_disque(5,5)
-#dessine_config(5)
+dessine_config(5)
 #efface_tout(5)
 #init(5)
 #mainloop()
@@ -379,12 +379,13 @@ def jouer_un_coup(n):
 		b.append(g)
 		del c[-1]
 
+	dessine_disque(4,5,plateau)
+	return plateau
 
-	dessine_plateau(5)
-	dessine_disque(5,5,plateau)
+def boucle_jeu(plateau,n):
 
 
-jouer_un_coup(5)
+#jouer_un_coup(5)
 #lire_coords(10)
 #nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
 #disque_superieur(int(input("Entrez un nombre de disque : ")))
