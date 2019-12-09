@@ -383,7 +383,7 @@ def jouer_un_coup(n):
 	dessine_disque(4,5,plateau)
 	return plateau
 
-def test(n):
+def indice_dis(n):
 	this = sys.modules[__name__] # this is now your current namespace
 	for x in range(0,n):
 		setattr(this, 'ndis%s' % x, n)
