@@ -383,7 +383,7 @@ def jouer_un_coup(n):
 	return plateau
 
 def boucle_jeu(plateau,n):
-
+	limite = 
 
 #jouer_un_coup(5)
 #lire_coords(10)
