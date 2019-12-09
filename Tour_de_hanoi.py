@@ -49,7 +49,7 @@ def disque_superieur(n):
 		else:
 			dsup.append(0)
 
-	return dsup
+	print(dsup)
 def pos_disque(n,numdisque):
 
 	varinit = init(n) #variables définies dans init
@@ -140,7 +140,7 @@ def dessine_disque(numdisque,n,plateau):
 	b = plateau[1]
 	c = plateau[2]
 
-	print(a,b,c)
+	print(a[numdisque-1])
 
 	if numdisque in a:										#Test la tour dans laquelle est le disque
 
