@@ -28,53 +28,47 @@ def init(n):
 
 	grandeur_disque.sort()
 	bord_select.sort(reverse=True)
-	return poteau_g,poteau_c,poteau_d,grandeur_disque,bord_select
+	plateau = [poteau_g,poteau_c,poteau_d]
 
-def nombre_disques(n,p):
-	varinit = init(n) #variables définies dans init
-	l = varinit[p] #Variable l qui prend l'un des poteaux en parametres
-	lengh = len(l)
+	return poteau_g,poteau_c,poteau_d,grandeur_disque,bord_select,plateau
+
+def nombre_disques(plateau,ntour):
+	lengh = len(plateau[ntour])
 	return lengh
 
-def disque_superieur(n):
-
-	varinit = init(n) #variables définies dans init
+def disque_superieur(plateau,n):
 	dsup = []
 
-
 	for ntour in range(0,3):
-		a = varinit[ntour]
+		a = plateau[ntour]
 		if (a != []):
 			a = a[-1]
 			dsup.append(a)
 		else:
 			dsup.append(0)
 
-	print(dsup)
-def pos_disque(n,numdisque):
+	return(dsup)
 
-	varinit = init(n) #variables définies dans init
+def pos_disque(n,numdisque,plateau):
 	
-	if numdisque in varinit[0]:
+	if numdisque in plateau[0]:
 		print("Le disque n°", numdisque, "est dans la tour gauche.")
-	elif numdisque in varinit[1]:
+	elif numdisque in plateau[1]:
 		print("Le disque n°", numdisque, "est dans la tour centre.")
-	elif numdisque in varinit[2]:
+	elif numdisque in plateau[2]:
 		print("Le disque n°", numdisque, "est dans la tour droite.")
 	else:
 		print("Le numéro de disque n'existe pas.")
 
 def verif_deplacement(n,nt1,nt2):
-	ldsup = disque_superieur(n) #liste des plus hauts disques de chaque tour
+	ldsup = disque_superieur(plateau,n) #liste des plus hauts disques de chaque tour
 	if ldsup[nt1]<ldsup[nt2] and (ldsup[nt1]!=0 or ldsup[nt2]==0):
 		return True
 	else:
 		return False
 
-def verifier_victoire(n):
-	varinit = init(n)
-	nt2 = varinit[2]
-	if len(nt2) == n:
+def verifier_victoire(plateau,n):
+	if len(plateau[2]) == n:
 		return True 
 	else:
 		return False 
@@ -130,7 +124,6 @@ def dessine_plateau(n):
 	down()
 
 def dessine_disque(numdisque,n,plateau):
-	varinit = init(n)
 	grandeur_disque = varinit[3]  #Variable donnant la longueur du disque sélectionné
 	bord_select = varinit[4]	  #Variable donnant l'écart entre le disque sélectionné et les bordures du plateau
 
@@ -141,7 +134,7 @@ def dessine_disque(numdisque,n,plateau):
 	b = plateau[1]
 	c = plateau[2]
 
-	print(a[numdisque-1])
+	print(a,b,c)
 
 	if numdisque in a:										#Test la tour dans laquelle est le disque
 
@@ -164,7 +157,7 @@ def dessine_disque(numdisque,n,plateau):
 
 		else:
 			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*a[numdisque-1])
+			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*b[numdisque-1])
 			down()
 
 		for k in range(0,2):
@@ -181,7 +174,7 @@ def dessine_disque(numdisque,n,plateau):
 
 		else:
 			up()
-			goto(-280+2*bord_select[numdisque-1],-189+20*a[numdisque-1])
+			goto(-280+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189+20*c[numdisque-1])
 			down()
 
 		for k in range(0,2):
@@ -194,9 +187,13 @@ def dessine_disque(numdisque,n,plateau):
 	return grandeur_disque
 
 def efface_disque(numdisque,n,plateau):
-	varinit = init(n)
+	plateau = varinit[5]
 	grandeur_disque = varinit[3]
 	bord_select = varinit[4]
+
+	a = plateau[0]
+	b = plateau[1]
+	c = plateau[2]
 
 	if numdisque in a:
 
@@ -300,23 +297,15 @@ def efface_disque(numdisque,n,plateau):
 
 def dessine_config(n):
 	for k in range(0,n+1):
-		dessine_disque(k,n)
+		dessine_disque(k,n,plateau)
+
 
 def efface_tout(n):
 	for k in range(0,n+1):
-		efface_disque(k,n)
+		efface_disque(k,n,plateau)
 	
 
-dessine_plateau(5)
-#dessine_disque(5,5)
-#efface_disque(5,5)
-dessine_config(5)
-#efface_tout(5)
-#init(5)
-#mainloop()
-
 def lire_coords(n):
-	varinit = init(n)
 	poteau_g = varinit[0]
 	poteau_c = varinit[1]
 	poteau_d = varinit[2]
@@ -329,7 +318,7 @@ def lire_coords(n):
 		td = tour_depart
 		ta = tour_arrivee
 		p = tour_depart
-		lengh = nombre_disques(n,p)
+		lengh = nombre_disques(plateau,p)
 		nt1 = tour_depart
 		nt2 = tour_arrivee
 		verif = verif_deplacement(n,nt1,nt2)
@@ -344,47 +333,61 @@ def lire_coords(n):
 	return td,ta
 
 def jouer_un_coup(n):
-	varinit = init(n)
+	plateau = varinit[5]
 	lire_c = lire_coords(n)
 	td = lire_c[0]
 	ta = lire_c[1]
 
-	a = varinit[0]
-	b = varinit[1]
-	c = varinit[2]
+	dadd = 0
+	deff = 0
 
-	plateau = [a,b,c]
+	a = plateau[0]
+	b = plateau[1]
+	c = plateau[2]
 
 	if td == 0 and ta == 1:
 		g = a[-1]
+		efface_disque(g,n,plateau)
 		b.append(g)
 		del a[-1]
+		dessine_disque(g,n,plateau)
 	elif td == 0 and ta == 2:
 		g = a[-1]
+		efface_disque(g,n,plateau)
 		c.append(g)
 		del a[-1]
+		dessine_disque(g,n,plateau)
 	elif td == 1 and ta == 0:
 		g = b[-1]
+		efface_disque(g,n,plateau)
 		a.append(g)
 		del b[-1]
+		dessine_disque(g,n,plateau)
 	elif td == 1 and ta == 2:
 		g = b[-1]
+		efface_disque(g,n,plateau)
 		c.append(g)
-		del b[-1]	
+		del b[-1]
+		dessine_disque(g,n,plateau)	
 	elif td == 2 and ta == 0:
 		g = c[-1]
+		efface_disque(g,n,plateau)
 		a.append(g)
 		del c[-1]
+		dessine_disque(g,n,plateau)
 	elif td == 2 and ta == 1:
 		g = c[-1]
+		efface_disque(g,n,plateau)
 		b.append(g)
 		del c[-1]
+		dessine_disque(g,n,plateau)
 
-	dessine_disque(4,5,plateau)
+	# efface_disque(deff,n,plateau)
+	# dessine_disque(dadd,n,plateau)
 	return plateau
 
 def test(n):
-	this = sys.modules[__name__] # this is now your current namespace
+	this = sys.modules[__name__] 
 	for x in range(0,n):
 		setattr(this, 'ndis%s' % x, n)
 		n = n-1
@@ -392,11 +395,33 @@ def test(n):
 		return 'ndis%s'
 
 def boucle_jeu(plateau,n):
-	limite = 
+	limite = 60
+	ver_vic = verifier_victoire(n)
+	while ver_vic != True or limite > 0:
+		jouer_un_coup(n)
+		verif_victoire(n)
+		limite = limite - 1
+	
 
-#jouer_un_coup(5)
-#lire_coords(10)
-#nombre_disques(int(input("Entrez un nombre de disque : ")),(int(input("Selectionner la tour (gauche = 0, centre = 1, droite = 2): "))))
-#disque_superieur(int(input("Entrez un nombre de disque : ")))
-#pos_disque(int(input("Entrez un nombre de disque : ")),(int(input("Entrez le numéro de disque souhaité: "))))
+
+
+varinit = init(5)
+plateau = varinit[5]
+test(5)
+
+
+#lire_coords(5)
+#nombre_disques(plateau,2)
+#disque_superieur(plateau,2)
+#pos_disque(5,ndis0,plateau)
+#verifier_victoire(plateau,5)
 #verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
+
+dessine_plateau(5)
+#dessine_disque(ndis1,5,plateau)
+#efface_disque(5,5)
+dessine_config(5)
+#efface_tout(5)
+jouer_un_coup(5)
+
+mainloop()
