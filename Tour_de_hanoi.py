@@ -386,8 +386,8 @@ def jouer_un_coup(n):
 	# dessine_disque(dadd,n,plateau)
 	return plateau
 
-def test(n):
-	this = sys.modules[__name__] 
+def indice_dis(n):
+	this = sys.modules[__name__] # this is now your current namespace
 	for x in range(0,n):
 		setattr(this, 'ndis%s' % x, n)
 		n = n-1
@@ -407,7 +407,7 @@ def boucle_jeu(plateau,n):
 
 varinit = init(5)
 plateau = varinit[5]
-test(5)
+indice_dis(5)
 
 
 #lire_coords(5)
