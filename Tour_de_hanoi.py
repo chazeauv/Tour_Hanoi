@@ -150,15 +150,10 @@ def dessine_disque(numdisque,n,plateau):
 			left(90)
 		
 	elif numdisque in b:
-		if numdisque == b[0]:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-169)
-			down()
 
-		else:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*b[numdisque-1])
-			down()
+		up()
+		goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*b[numdisque-1])
+		down()
 
 		for k in range(0,2):
 			forward(grandeur_disque[numdisque-1])
@@ -167,15 +162,10 @@ def dessine_disque(numdisque,n,plateau):
 			left(90)
 
 	elif numdisque in c:
-		if numdisque == c[0]:
-			up()
-			goto(-300+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189)
-			down()
 
-		else:
-			up()
-			goto(-280+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189+20*c[numdisque-1])
-			down()
+		up()
+		goto(-280+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189+20*c[numdisque-1])
+		down()
 
 		for k in range(0,2):
 			forward(grandeur_disque[numdisque-1])
@@ -197,15 +187,9 @@ def efface_disque(numdisque,n,plateau):
 
 	if numdisque in a:
 
-		if numdisque == a[0]:
-			up()
-			goto(-300+bord_select[numdisque-1],-169)
-			down()
-
-		else:
-			up()
-			goto(-300+bord_select[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		up()
+		goto(-300+bord_select[numdisque-1],-189+20*a[numdisque-1])
+		down()
 			
 		color("white")
 		begin_fill()
@@ -230,15 +214,11 @@ def efface_disque(numdisque,n,plateau):
 		end_fill()
 		
 	elif numdisque in b:
-		if numdisque == b[0]:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189)
-			down()
 
-		else:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		
+		up()
+		goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*a[numdisque-1])
+		down()
 
 		color("white")								#Blanc pour effacer le disque
 		begin_fill()
@@ -262,16 +242,11 @@ def efface_disque(numdisque,n,plateau):
 
 		end_fill()
 
-	elif numdisque in c:
-		if numdisque == c[0]:
-			up()
-			goto(-300+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-169)
-			down()
+	elif numdisque in c/
 
-		else:
-			up()
-			goto(-280+2*bord_select[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		up()
+		goto(-280+2*bord_select[numdisque-1],-189+20*a[numdisque-1])
+		down()
 
 		color("white")
 		begin_fill()
