@@ -9,7 +9,6 @@ def init(n):
 
 	vargd = []
 	grandeur_disque = []
-	bord_select = [20]
 	h = 20
 	m = n
 
@@ -24,13 +23,11 @@ def init(n):
 
 	for k in range(0,m-1):
 		h = h +15
-		bord_select.append(h)
 
 	grandeur_disque.sort()
-	bord_select.sort(reverse=True)
 	plateau = [poteau_g,poteau_c,poteau_d]
 
-	return poteau_g,poteau_c,poteau_d,grandeur_disque,bord_select,plateau
+	return poteau_g,poteau_c,poteau_d,grandeur_disque,plateau
 
 def nombre_disques(plateau,ntour):
 	lengh = len(plateau[ntour])
@@ -76,7 +73,7 @@ def verifier_victoire(plateau,n):
 
 #TURTLE
 hideturtle()
-#speed(0)
+speed(0)
 def dessine_plateau(n):
 	
 	#bgpic("C:\Users\lazer\Desktop\HanoiPowa\wallpaper.gif")
@@ -126,6 +123,7 @@ def dessine_plateau(n):
 def dessine_disque(numdisque,n,plateau):
 	grandeur_disque = varinit[3]  #Variable donnant la longueur du disque sélectionné
 	bord_select = varinit[4]	  #Variable donnant l'écart entre le disque sélectionné et les bordures du plateau
+	dim_grd_disque = 20 + ((n-1)*30)
 
 	fillcolor("white")
 	begin_fill()
@@ -134,13 +132,10 @@ def dessine_disque(numdisque,n,plateau):
 	b = plateau[1]
 	c = plateau[2]
 
-	print(a,b,c)
-
 	if numdisque in a:										#Test la tour dans laquelle est le disque
 
-		
 		up()
-		goto(-300+bord_select[numdisque-1],-189+20*a[numdisque-1])
+		goto(-280+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*a[numdisque-1])
 		down()
 			
 		for k in range(0,2):								#Boucle dessin disque
@@ -150,15 +145,10 @@ def dessine_disque(numdisque,n,plateau):
 			left(90)
 		
 	elif numdisque in b:
-		if numdisque == b[0]:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-169)
-			down()
 
-		else:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*b[numdisque-1])
-			down()
+		up()
+		goto(-260+dim_grd_disque+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*b[numdisque-1])
+		down()
 
 		for k in range(0,2):
 			forward(grandeur_disque[numdisque-1])
@@ -167,15 +157,10 @@ def dessine_disque(numdisque,n,plateau):
 			left(90)
 
 	elif numdisque in c:
-		if numdisque == c[0]:
-			up()
-			goto(-300+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189)
-			down()
 
-		else:
-			up()
-			goto(-280+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-189+20*c[numdisque-1])
-			down()
+		up()
+		goto(-240+2*dim_grd_disque+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*c[numdisque-1])
+		down()
 
 		for k in range(0,2):
 			forward(grandeur_disque[numdisque-1])
@@ -187,25 +172,18 @@ def dessine_disque(numdisque,n,plateau):
 	return grandeur_disque
 
 def efface_disque(numdisque,n,plateau):
-	plateau = varinit[5]
 	grandeur_disque = varinit[3]
-	bord_select = varinit[4]
+	dim_grd_disque = 20 + ((n-1)*30)
 
 	a = plateau[0]
 	b = plateau[1]
 	c = plateau[2]
 
+
 	if numdisque in a:
-
-		if numdisque == a[0]:
-			up()
-			goto(-300+bord_select[numdisque-1],-169)
-			down()
-
-		else:
-			up()
-			goto(-300+bord_select[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		up()
+		goto(-280+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*a[numdisque-2])
+		down()
 			
 		color("white")
 		begin_fill()
@@ -230,15 +208,10 @@ def efface_disque(numdisque,n,plateau):
 		end_fill()
 		
 	elif numdisque in b:
-		if numdisque == b[0]:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189)
-			down()
-
-		else:
-			up()
-			goto(-300+2*bord_select[numdisque-1]+grandeur_disque[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		
+		up()
+		goto(-260+dim_grd_disque+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*b[numdisque-2])
+		down()
 
 		color("white")								#Blanc pour effacer le disque
 		begin_fill()
@@ -263,15 +236,10 @@ def efface_disque(numdisque,n,plateau):
 		end_fill()
 
 	elif numdisque in c:
-		if numdisque == c[0]:
-			up()
-			goto(-300+3*bord_select[numdisque-1]+2*grandeur_disque[numdisque-1],-169)
-			down()
 
-		else:
-			up()
-			goto(-280+2*bord_select[numdisque-1],-189+20*a[numdisque-1])
-			down()
+		up()
+		goto(-240+2*dim_grd_disque+((grandeur_disque[-1]/2)-(grandeur_disque[numdisque-1]/2)),-189+20*c[numdisque-2])
+		down()
 
 		color("white")
 		begin_fill()
@@ -309,7 +277,7 @@ def lire_coords(n):
 	poteau_g = varinit[0]
 	poteau_c = varinit[1]
 	poteau_d = varinit[2]
-	#print(poteau_g,poteau_c,poteau_d) TEST
+
 	tour_depart = 0
 	tour_arrivee = 0
 	while (tour_depart != True) and (tour_arrivee != True):
@@ -332,8 +300,7 @@ def lire_coords(n):
 			tour_arrivee = False
 	return td,ta
 
-def jouer_un_coup(n):
-	plateau = varinit[5]
+def jouer_un_coup(n,plateau):
 	lire_c = lire_coords(n)
 	td = lire_c[0]
 	ta = lire_c[1]
@@ -382,8 +349,6 @@ def jouer_un_coup(n):
 		del c[-1]
 		dessine_disque(g,n,plateau)
 
-	# efface_disque(deff,n,plateau)
-	# dessine_disque(dadd,n,plateau)
 	return plateau
 
 def indice_dis(n):
@@ -394,7 +359,7 @@ def indice_dis(n):
 	for i in range(0,n):
 		return 'ndis%s'
 
-def boucle_jeu(plateau,n):
+def boucle_jeu(plateau,n,bord_select):
 	limite = 60
 	ver_vic = verifier_victoire(plateau,n)
 	while ver_vic != True or limite > 0:
@@ -405,17 +370,9 @@ def boucle_jeu(plateau,n):
 
 
 
-
-n = int(input("Entrez le nombre de disques souhaité :"))
-varinit = init(n)
-plateau = varinit[n]
-indice_dis(n)
-dessine_plateau(n)
-dessine_config(n)
-boucle_jeu(plateau,n)
-
-
-
+varinit = init(5)
+plateau = varinit[4]
+indice_dis(5)
 
 
 #lire_coords(5)
@@ -425,9 +382,11 @@ boucle_jeu(plateau,n)
 #verifier_victoire(plateau,5)
 #verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
 
-#dessine_disque(ndis1,5,plateau)
+#dessine_plateau(5)
+#dessine_disque(5,5,plateau)
 #efface_disque(5,5)
+#dessine_config(5)
+#jouer_un_coup(5,plateau)
 #efface_tout(5)
-jouer_un_coup(5)
 
-mainloop()
+#mainloop()
