@@ -1,4 +1,4 @@
-
+#pylint: skip-file
 from turtle import*
 import sys
 
@@ -387,7 +387,7 @@ def jouer_un_coup(n):
 	return plateau
 
 def indice_dis(n):
-	this = sys.modules[__name__] # this is now your current namespace
+	this = sys.modules[__name__] 
 	for x in range(0,n):
 		setattr(this, 'ndis%s' % x, n)
 		n = n-1
@@ -396,18 +396,26 @@ def indice_dis(n):
 
 def boucle_jeu(plateau,n):
 	limite = 60
-	ver_vic = verifier_victoire(n)
+	ver_vic = verifier_victoire(plateau,n)
 	while ver_vic != True or limite > 0:
 		jouer_un_coup(n)
-		verif_victoire(n)
+		verifier_victoire(plateau,n)
 		limite = limite - 1
 	
 
 
 
-varinit = init(5)
-plateau = varinit[5]
-indice_dis(5)
+
+n = int(input("Entrez le nombre de disques souhaité :"))
+varinit = init(n)
+plateau = varinit[n]
+indice_dis(n)
+dessine_plateau(n)
+dessine_config(n)
+boucle_jeu(plateau,n)
+
+
+
 
 
 #lire_coords(5)
@@ -417,10 +425,8 @@ indice_dis(5)
 #verifier_victoire(plateau,5)
 #verif_deplacement(int(input("Entrez le nombre de disque:")),int(input("Entrez la tour de départ (0 à 2):")),int(input("Entrez le numéro de la tour d'arrivée:")))
 
-dessine_plateau(5)
 #dessine_disque(ndis1,5,plateau)
 #efface_disque(5,5)
-dessine_config(5)
 #efface_tout(5)
 jouer_un_coup(5)
 
